@@ -1,0 +1,4 @@
+#moviesTable .tableBody tr:hover
+{ 
+  cursor:pointer; 
+}
