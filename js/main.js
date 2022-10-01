@@ -1,7 +1,20 @@
+/*********************************************************************************
+ * WEB422 – Assignment 02
+ *
+ * I declare that this assignment is my own work in accordance with Seneca Academic Policy.
+ * No part of this assignment has been copied manually or electronically from any other source
+ * (including web sites) or distributed to other students.
+ *
+ * Name: Muhammad Ahmed
+ * Student ID: 146908207
+ * Date: 09-15-2022
+ ********************************************************************************/
+
+// global variables
 const api = `https://movie-api.cyclic.app`;
-let page = 1,
-  perPage = 10;
 const noValue = 'N/A';
+const perPage = 10;
+let page = 1;
 
 const createTableRows = (data) => {
   return new Promise((resolve, reject) => {
@@ -85,5 +98,31 @@ const loadMovieData = (title = null) => {
 };
 
 document.addEventListener('DOMContentLoaded', (event) => {
+  // default data fetching and table population on load
   loadMovieData();
+
+  // user requests previous page
+  document.querySelector('#paginationPrevious').addEventListener('click', (event) => {
+    if (page > 1) page--;
+    loadMovieData();
+  });
+
+  // user requests next page
+  document.querySelector('#paginationNext').addEventListener('click', (event) => {
+    page++;
+    loadMovieData();
+  });
+
+  // user clears the search
+  document.querySelector('#searchClear').addEventListener('click', (event) => {
+    document.querySelector('#searchRequest').value = '';
+    loadMovieData();
+  });
+
+  // user enters and submits a search for a specific movie title
+  document.querySelector('#searchBar').addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log(document.querySelector('#searchRequest').value);
+    loadMovieData(document.querySelector('#searchRequest').value);
+  });
 });
