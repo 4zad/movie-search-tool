@@ -116,12 +116,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
   // user clears the search
   document.querySelector('#searchClear').addEventListener('click', (event) => {
     document.querySelector('#searchRequest').value = '';
+    page = 1;
     loadMovieData();
   });
 
   // user enters and submits a search for a specific movie title
   document.querySelector('#searchBar').addEventListener('submit', (event) => {
     event.preventDefault();
+    page = 1;
     loadMovieData(document.querySelector('#searchRequest').value);
   });
 });
