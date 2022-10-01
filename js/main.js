@@ -122,7 +122,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
   // user enters and submits a search for a specific movie title
   document.querySelector('#searchBar').addEventListener('submit', (event) => {
     event.preventDefault();
-    console.log(document.querySelector('#searchRequest').value);
     loadMovieData(document.querySelector('#searchRequest').value);
   });
 });
